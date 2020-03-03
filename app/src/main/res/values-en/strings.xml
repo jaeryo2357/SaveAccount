@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SaveAccount</string>
+
+    <string name="add_Site">사이트 명</string>
+    <string name="add_Id">아이디</string>
+    <string name="add_password">비밀번호</string>
+</resources>

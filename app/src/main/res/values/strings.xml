@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SaveAccount</string>
+
+    <string name="add_Site">Site Name</string>
+    <string name="add_Id">ID</string>
+    <string name="add_password">Password</string>
 </resources>
