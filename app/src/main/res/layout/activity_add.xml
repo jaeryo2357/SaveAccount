@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
-    tools:context=".AddActivity">
+    android:padding="30dp">
+
 
     <EditText
         android:id="@+id/editText_site"
@@ -13,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/add_Site"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,10 +47,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:background="@color/colorAccent"
         android:text="Button"
         android:textColor="@color/Background"
-        android:background="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Pwd" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
