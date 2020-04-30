@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("MainCycle","onStart")
+        Log.d("MainCycle","onStart test")
     }
 
     override fun onResume() {
