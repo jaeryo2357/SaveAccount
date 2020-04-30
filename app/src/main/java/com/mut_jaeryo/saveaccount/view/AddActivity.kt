@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.mut_jaeryo.saveaccount.R
-import com.mut_jaeryo.saveaccount.databinding.ActivityAddBinding
 import com.mut_jaeryo.saveaccount.data.Account
 
 class AddActivity : AppCompatActivity() {

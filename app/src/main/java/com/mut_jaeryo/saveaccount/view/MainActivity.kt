@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainCycle","onCreate")
 
 
+
         add_Account.setOnClickListener {
             val intent = Intent(this@MainActivity,
                 AddActivity::class.java)
