@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.AddActivity"
+        <activity android:name=".insert.ui.InsertActivity"
             android:windowSoftInputMode="adjustResize"
-            android:parentActivityName=".view.MainActivity"></activity>
-        <activity android:name=".view.MainActivity"
+            android:parentActivityName="com.mut_jaeryo.saveaccount.main.ui.MainActivity"></activity>
+        <activity android:name="com.mut_jaeryo.saveaccount.main.ui.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
