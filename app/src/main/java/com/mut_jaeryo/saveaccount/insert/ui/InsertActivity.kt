@@ -1,11 +1,11 @@
-package com.mut_jaeryo.saveaccount.view
+package com.mut_jaeryo.saveaccount.insert.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.mut_jaeryo.saveaccount.R
 
-class AddActivity : AppCompatActivity() {
+class InsertActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

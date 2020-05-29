@@ -1,4 +1,4 @@
-package com.mut_jaeryo.saveaccount.util
+package com.mut_jaeryo.saveaccount.account.adapter
 
 import android.view.LayoutInflater
 import android.view.View

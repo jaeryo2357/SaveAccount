@@ -1,10 +1,10 @@
-package com.mut_jaeryo.saveaccount.view
+package com.mut_jaeryo.saveaccount.main.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.mut_jaeryo.saveaccount.R
+import com.mut_jaeryo.saveaccount.insert.ui.InsertActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         add_Account.setOnClickListener {
             val intent = Intent(this@MainActivity,
-                AddActivity::class.java)
+                InsertActivity::class.java)
             startActivity(intent)
         }
     }

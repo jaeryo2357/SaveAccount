@@ -1,11 +1,11 @@
-package com.mut_jaeryo.saveaccount.model
+package com.mut_jaeryo.saveaccount.main.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mut_jaeryo.saveaccount.util.MyDatabaseHelper
+import com.mut_jaeryo.saveaccount.account.model.Account
 
-class AccountViewModel : ViewModel() {
+class mainViewModel : ViewModel() {
 
     private val _accountList = MutableLiveData<List<Account>>()
     val accountList : LiveData<List<Account>> = _accountList

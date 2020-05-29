@@ -1,10 +1,10 @@
-package com.mut_jaeryo.saveaccount.util
+package com.mut_jaeryo.saveaccount.account.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class MyDatabaseHelper(context: Context) : SQLiteOpenHelper(context,
+class AccountDatabase(context: Context) : SQLiteOpenHelper(context,
     DATABASE_NAME,null,
     VERSION_CODE
 ) {
