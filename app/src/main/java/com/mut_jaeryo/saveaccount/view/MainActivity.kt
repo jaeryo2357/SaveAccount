@@ -12,8 +12,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("MainCycle","onCreate")
-
 
 
         add_Account.setOnClickListener {
@@ -22,34 +20,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("MainCycle","onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("MainCycle","onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("MainCycle","onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("MainCycle","onStop")
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("MainCycle","onDestroy")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d("MainCycle","onRestart")
-    }
-
 }
