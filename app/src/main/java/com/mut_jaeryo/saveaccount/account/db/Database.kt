@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class AccountDatabase(context: Context) : SQLiteOpenHelper(context,
+class Database(context: Context) : SQLiteOpenHelper(context,
     DATABASE_NAME,null,
     VERSION_CODE
 ) {
@@ -25,10 +25,10 @@ class AccountDatabase(context: Context) : SQLiteOpenHelper(context,
         private const val DATABASE_NAME = "Account.db"
         private const val VERSION_CODE = 1
 
-        private val TABLE_NAME = "my_account"
-        private val COLURM_ID = "_id"
-        private val COLURM_SITE = "Site"
-        private val COLURM_ACCOUNT_ID = "account_id"
-        private val COLURM_ACCOUNT_PASSWORD = "account_password"
+        private const val TABLE_NAME = "my_account"
+        private const val COLURM_ID = "_id"
+        private const val COLURM_SITE = "Site"
+        private const val COLURM_ACCOUNT_ID = "account_id"
+        private const val COLURM_ACCOUNT_PASSWORD = "account_password"
     }
 }
