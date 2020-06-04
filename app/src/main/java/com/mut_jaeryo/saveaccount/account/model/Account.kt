@@ -8,6 +8,6 @@ import androidx.room.PrimaryKey
 data class Account(
     @PrimaryKey(autoGenerate = true) val id : Int,
     @ColumnInfo(name = "site") val site : String,
-    @ColumnInfo(name = "user_id") var user_id : String,
-    @ColumnInfo(name = "user_pwd") var user_pwd : String
+    @ColumnInfo(name = "user_id") var userId : String,
+    @ColumnInfo(name = "user_pwd") var userPwd : String
 )
