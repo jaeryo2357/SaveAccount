@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.mut_jaeryo.saveaccount.account.db.AccountDB
-import com.mut_jaeryo.saveaccount.account.model.Account
+import com.mut_jaeryo.saveaccount.data.source.local.AccountDataBase
+import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.account.repository.AccountRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
     val allWords: LiveData<List<Account>>
 
     init {
-        val accountsDao = AccountDB.getDatabase(application).accountDao()
+        val accountsDao = AccountDataBase.getDatabase(application).accountDao()
         repository = AccountRepository(accountsDao)
         allWords = repository.allAccounts
     }

@@ -1,15 +1,13 @@
-package com.mut_jaeryo.saveaccount.account.db
+package com.mut_jaeryo.saveaccount.data.source.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mut_jaeryo.saveaccount.account.model.Account
-import com.mut_jaeryo.saveaccount.account.model.AccountDao
-import kotlinx.coroutines.CoroutineScope
+import com.mut_jaeryo.saveaccount.data.Account
 
 @Database(entities = arrayOf(Account::class), version = 1, exportSchema = false)
-public abstract class AccountDB : RoomDatabase(){
+public abstract class AccountDataBase : RoomDatabase(){
 
     abstract fun accountDao(): AccountDao
 
@@ -17,16 +15,17 @@ public abstract class AccountDB : RoomDatabase(){
         // Singleton prevents multiple instances of database opening at the
         // same time.
         @Volatile
-        private var INSTANCE: AccountDB? = null
+        private var INSTANCE: AccountDataBase? = null
 
         fun getDatabase(
             context: Context
-        ): AccountDB {
-            return INSTANCE ?: synchronized(this) {
+        ): AccountDataBase {
+            return INSTANCE
+                ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    AccountDB::class.java,
-                    "word_database"
+                    AccountDataBase::class.java,
+                    "accounts.db"
                 ).build()
                 INSTANCE = instance
                 return instance

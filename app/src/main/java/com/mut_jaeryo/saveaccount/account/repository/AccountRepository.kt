@@ -1,8 +1,8 @@
 package com.mut_jaeryo.saveaccount.account.repository
 
 import androidx.lifecycle.LiveData
-import com.mut_jaeryo.saveaccount.account.model.Account
-import com.mut_jaeryo.saveaccount.account.model.AccountDao
+import com.mut_jaeryo.saveaccount.data.Account
+import com.mut_jaeryo.saveaccount.data.source.local.AccountDao
 
 //DAO의 접근을 Clean 추상화
 class AccountRepository(private val accountDao : AccountDao) {
