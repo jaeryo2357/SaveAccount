@@ -16,6 +16,13 @@ interface AccountDao {
     @Query("SELECT * from accounts") fun getAccounts(): LiveData<List<Account>>
 
     /**
+     * Select Account
+     * @param accountId the account id
+     * @return the account with id
+     */
+    @Query("SELECT * from accounts WHERE entryId = :accountId") fun getAccountById(accountId : String) : Account?
+
+    /**
      * 동일하 값이 있을 경우, 해당 값을 교체
      *
      */
@@ -28,6 +35,13 @@ interface AccountDao {
      * @return the number of tasks updated, this should be always 1
      */
     @Update fun updateAccount(account: Account) : Int
+
+    /**
+     * Delete Account by id
+     * @return the number of tasks deleted. This should always be 1.
+     */
+    @Query("DELETE FROM accounts WHERE entryId = :accountId") fun deleteAccountById(accountId : String) : Int
+
 
     @Query("DELETE FROM accounts") fun deleteAll()
 }
