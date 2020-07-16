@@ -29,5 +29,5 @@ interface AccountDataSource {
 
     fun deleteAllAccounts()
 
-    fun deleteAccount(account : Account)
+    fun deleteAccount(accountId : String)
 }
