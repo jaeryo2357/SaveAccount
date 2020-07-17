@@ -16,7 +16,7 @@ interface AccountDataSource {
 
     interface GetAccountsCallback {
 
-        fun onAccountsLoaded(account: Account)
+        fun onAccountLoaded(account: Account)
 
         fun onDataNotAvailable()
     }

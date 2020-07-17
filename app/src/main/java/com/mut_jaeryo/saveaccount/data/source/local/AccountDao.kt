@@ -1,6 +1,5 @@
 package com.mut_jaeryo.saveaccount.data.source.local
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.mut_jaeryo.saveaccount.data.Account
 
@@ -13,7 +12,7 @@ interface AccountDao {
     /**
      * Select all Account from the Account table
      */
-    @Query("SELECT * from accounts") fun getAccounts(): LiveData<List<Account>>
+    @Query("SELECT * from accounts") fun getAccounts(): List<Account>
 
     /**
      * Select Account

@@ -41,14 +41,14 @@ class AccountRepository(
         val accountInCache = getTaskWithId(accountId)
 
         if (accountInCache != null) {
-            callback.onAccountsLoaded(accountInCache)
+            callback.onAccountLoaded(accountInCache)
             return
         }
 
         dataSource.getAccount(accountId, object : AccountDataSource.GetAccountsCallback {
-            override fun onAccountsLoaded(account: Account) {
+            override fun onAccountLoaded(account: Account) {
                 cacheAndPerform(account) {
-                    callback.onAccountsLoaded(account)
+                    callback.onAccountLoaded(account)
                 }
             }
 
