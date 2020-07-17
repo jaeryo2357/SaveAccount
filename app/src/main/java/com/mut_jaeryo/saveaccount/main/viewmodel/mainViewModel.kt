@@ -3,7 +3,7 @@ package com.mut_jaeryo.saveaccount.main.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mut_jaeryo.saveaccount.account.model.Account
+import com.mut_jaeryo.saveaccount.data.Account
 
 class mainViewModel : ViewModel() {
 
