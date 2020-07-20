@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.ui.MainActivity">
+        tools:context=".account.ui.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/account_list"

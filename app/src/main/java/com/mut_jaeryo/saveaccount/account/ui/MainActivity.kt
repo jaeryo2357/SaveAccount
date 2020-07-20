@@ -1,4 +1,4 @@
-package com.mut_jaeryo.saveaccount.main.ui
+package com.mut_jaeryo.saveaccount.account.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

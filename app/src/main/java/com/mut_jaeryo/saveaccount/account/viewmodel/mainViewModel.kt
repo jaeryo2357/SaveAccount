@@ -1,4 +1,4 @@
-package com.mut_jaeryo.saveaccount.main.viewmodel
+package com.mut_jaeryo.saveaccount.account.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
