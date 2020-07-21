@@ -1,5 +1,6 @@
 package com.mut_jaeryo.saveaccount.data.source.local
 
+import android.content.Context
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.data.source.AccountDataSource
 import com.mut_jaeryo.saveaccount.util.AppExecutor
@@ -59,6 +60,19 @@ class AccountLocalDataSource private constructor(
 
         @JvmStatic
         fun getInstance(appExecutor: AppExecutor, accountDao: AccountDao) : AccountLocalDataSource {
+            if (INSTANCE == null) {
+                synchronized(AccountLocalDataSource::class.java) { //여러 프로세스가 생성하지 않도록 lock을 걸어둔다.
+                    INSTANCE = AccountLocalDataSource(appExecutor, accountDao)
+                }
+            }
+            return INSTANCE!!
+        }
+
+        @JvmStatic
+        fun getInstance(context : Context) : AccountLocalDataSource {
+            val appExecutor = AppExecutor()
+            val accountDao : AccountDao = AccountDataBase.getDatabase(context).accountDao()
+
             if (INSTANCE == null) {
                 synchronized(AccountLocalDataSource::class.java) { //여러 프로세스가 생성하지 않도록 lock을 걸어둔다.
                     INSTANCE = AccountLocalDataSource(appExecutor, accountDao)
