@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.mut_jaeryo.saveaccount.R
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.data.source.AccountDataSource
 import com.mut_jaeryo.saveaccount.data.source.AccountRepository
 import com.mut_jaeryo.saveaccount.data.source.local.AccountLocalDataSource
 import com.mut_jaeryo.saveaccount.insert.ui.InsertActivity
+import com.mut_jaeryo.saveaccount.util.showSnackBar
 import kotlinx.android.synthetic.main.activity_accounts.*
 
 class AccountsActivity : AppCompatActivity(), AccountsContract.View{
@@ -89,6 +91,6 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
     }
 
     private fun showMessage(message: String) {
-
+        accounts_list.rootView.showSnackBar(message, Snackbar.LENGTH_SHORT)
     }
 }
