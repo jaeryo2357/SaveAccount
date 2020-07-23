@@ -9,4 +9,7 @@
     <string name="loading_account_empty">add Account</string>
     <string name="loading_accounts_error">can\'t find accounts</string>
     <string name="loading_success">loading success</string>
+
+    <string name="test_Account_category">Game</string>
+    <string name="test_Account_site">lol</string>
 </resources>
