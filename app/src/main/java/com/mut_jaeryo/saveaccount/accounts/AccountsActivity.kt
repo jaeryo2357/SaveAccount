@@ -3,6 +3,7 @@ package com.mut_jaeryo.saveaccount.accounts
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mut_jaeryo.saveaccount.R
@@ -27,14 +28,13 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
         override fun onAccountClick(clickedAccount: Account) {
             presenter.openAccountDetails(clickedAccount)
         }
-
     }
 
     private val listAdapter : AccountsAdapter = AccountsAdapter(ArrayList(0), itemListener)
 
     override fun onResume() {
         super.onResume()
-        //Presenter 데이터 로드
+        presenter.start()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -51,11 +51,11 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
             layoutManager = LinearLayoutManager(this@AccountsActivity)
         }
 
-        add_Account.setOnClickListener { showAddAccount() }
+        add_Account.setOnClickListener { presenter.addNewAccount() }
     }
 
     override fun showAccountsDetailsUi(accountId: String) {
-
+        // DetailView 로 이동
     }
 
     override fun showAddAccount() {
@@ -63,4 +63,32 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
         startActivityForResult(intent ,0)
     }
 
+    override fun showAccounts(accounts: List<Account>) {
+        listAdapter.accounts = accounts
+        accounts_list_empty.visibility = View.INVISIBLE
+        accounts_list.visibility = View.VISIBLE
+    }
+
+    override fun showNoAccounts() {
+        accounts_list_empty.visibility = View.VISIBLE
+        accounts_list.visibility = View.INVISIBLE
+    }
+
+    override fun showLoadingAccountsError() {
+        showMessage(getString(R.string.loading_accounts_error))
+    }
+
+    override fun showSuccessFullySavedMessage() {
+        showMessage(getString(R.string.loading_success))
+    }
+
+    override fun showLoadingIndicator(active: Boolean) {
+        refresh_layout.apply {
+            post { isRefreshing = active }
+        }
+    }
+
+    private fun showMessage(message: String) {
+
+    }
 }

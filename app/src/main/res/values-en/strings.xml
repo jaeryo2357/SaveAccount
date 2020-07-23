@@ -2,7 +2,11 @@
 <resources>
     <string name="app_name">SaveAccount</string>
 
-    <string name="add_Site">사이트 명</string>
-    <string name="add_Id">아이디</string>
-    <string name="add_password">비밀번호</string>
+    <string name="add_Site">Site</string>
+    <string name="add_Id">Id</string>
+    <string name="add_password">password</string>
+
+    <string name="loading_account_empty">add Account</string>
+    <string name="loading_accounts_error">can\'t find accounts</string>
+    <string name="loading_success">loading success</string>
 </resources>

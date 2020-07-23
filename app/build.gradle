@@ -60,6 +60,7 @@ dependencies {
 
 // Material design
     implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.materialVersion"
 
 // Testing
     testImplementation 'junit:junit:4.12'
