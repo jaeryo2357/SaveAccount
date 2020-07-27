@@ -11,6 +11,7 @@ import java.util.*
 
 @Entity(tableName = "accounts")
 data class Account(
+    @ColumnInfo(name = "category") val category: String,
     @ColumnInfo(name = "site") val site : String = "",
     @ColumnInfo(name = "userId") var userId : String = "",
     @ColumnInfo(name = "userPwd") var userPwd : String = "",
