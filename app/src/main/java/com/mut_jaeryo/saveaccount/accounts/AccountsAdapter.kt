@@ -25,11 +25,16 @@ class AccountsAdapter(accounts : List<Account>, val listener : AccountItemListen
 
     override fun onBindViewHolder(holder: AccountsViewHolder, position: Int) {
         val account = accounts[position]
+        val color = AccountsFilterType.getColor(account.category)
+
         holder.itemView.setOnClickListener { listener.onAccountClick(account) }
 
-        holder.category.text = account.category
-
-        holder.site.text = account.site
+        holder.category?.apply {
+            text = account.category
+            setTextColor(color)
+        }
+        holder.colorView.setBackgroundColor(color)
+        holder.site?.text = account.site
     }
 
     interface AccountItemListener {
@@ -37,8 +42,8 @@ class AccountsAdapter(accounts : List<Account>, val listener : AccountItemListen
     }
 
     class AccountsViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val category = view.findViewById<TextView>(R.id.account_category)
-
-        val site = view.findViewById<TextView>(R.id.account_title)
+        val colorView : View = view.findViewById(R.id.account_category_color)
+        val category : TextView? = view.findViewById(R.id.account_category)
+        val site : TextView? = view.findViewById(R.id.account_title)
     }
 }
