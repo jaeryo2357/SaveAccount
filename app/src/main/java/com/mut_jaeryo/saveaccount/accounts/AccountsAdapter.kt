@@ -1,11 +1,14 @@
 package com.mut_jaeryo.saveaccount.accounts
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.mut_jaeryo.saveaccount.R
 import com.mut_jaeryo.saveaccount.data.Account
 
-class AccountsAdapter(accounts : List<Account>, listener : AccountItemListener) : RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
+class AccountsAdapter(accounts : List<Account>, val listener : AccountItemListener) : RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
 
     var accounts : List<Account> = accounts
     set(value) {
@@ -14,21 +17,27 @@ class AccountsAdapter(accounts : List<Account>, listener : AccountItemListener) 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountsViewHolder {
-        TODO("Not yet implemented")
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.account_item, parent, false)
+        return AccountsViewHolder(view)
     }
 
     override fun getItemCount() = accounts.size
 
     override fun onBindViewHolder(holder: AccountsViewHolder, position: Int) {
-        TODO("Not yet implemented")
-    }
+        val account = accounts[position]
+        holder.itemView.setOnClickListener { listener.onAccountClick(account) }
+        //카테고리 text
 
+        holder.site.text = account.site
+    }
 
     interface AccountItemListener {
         fun onAccountClick(clickedAccount : Account)
     }
 
     class AccountsViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+        val category = view.findViewById<TextView>(R.id.account_category)
 
+        val site = view.findViewById<TextView>(R.id.account_title)
     }
 }
