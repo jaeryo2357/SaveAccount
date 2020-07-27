@@ -18,12 +18,17 @@ interface AccountsContract {
         fun showSuccessFullySavedMessage()
 
         fun showLoadingIndicator(active : Boolean)
+
+        fun showFilterPopUpMenu()
     }
 
     interface Presenter {
         fun start()
 
-        fun loadAccounts()
+        /**
+          @param forceUpdate true 일 경우 캐시된 메모리 지우고 다시 가져옴
+         */
+        fun loadAccounts(forceUpdate : Boolean)
 
         fun openAccountDetails(account : Account)
 

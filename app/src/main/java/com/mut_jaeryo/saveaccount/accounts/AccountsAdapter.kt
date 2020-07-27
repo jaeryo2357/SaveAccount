@@ -26,7 +26,8 @@ class AccountsAdapter(accounts : List<Account>, val listener : AccountItemListen
     override fun onBindViewHolder(holder: AccountsViewHolder, position: Int) {
         val account = accounts[position]
         holder.itemView.setOnClickListener { listener.onAccountClick(account) }
-        //카테고리 text
+
+        holder.category.text = account.category
 
         holder.site.text = account.site
     }

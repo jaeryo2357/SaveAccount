@@ -70,6 +70,10 @@ class AccountRepository(
         }
     }
 
+    fun refreshAccounts() {
+        cachedAccounts.clear()
+    }
+
     override fun deleteAllAccounts() {
         dataSource.deleteAllAccounts()
         cachedAccounts.clear()

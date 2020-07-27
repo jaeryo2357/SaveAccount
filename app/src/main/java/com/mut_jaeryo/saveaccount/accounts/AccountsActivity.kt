@@ -3,7 +3,10 @@ package com.mut_jaeryo.saveaccount.accounts
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -54,6 +57,7 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
         }
 
         add_Account.setOnClickListener { presenter.addNewAccount() }
+
     }
 
     override fun showAccountsDetailsUi(accountId: String) {
@@ -88,6 +92,41 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
         refresh_layout.apply {
             post { isRefreshing = active }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.refresh -> {
+                presenter.loadAccounts(true)
+            }
+            R.id.filter -> {
+                showFilterPopUpMenu()
+            }
+        }
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.accounts_activity_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun showFilterPopUpMenu() {
+         PopupMenu(this@AccountsActivity, findViewById(R.id.filter)).apply {
+             menuInflater.inflate(R.menu.filter_menu, menu)
+             setOnMenuItemClickListener {
+                 when(it.itemId) {
+                     R.id.all -> presenter.filterType = AccountsFilterType.ALL_ACCOUNTS
+                     R.id.sns -> presenter.filterType = AccountsFilterType.SNS_ACCOUNTS
+                     R.id.study -> presenter.filterType = AccountsFilterType.STUDY_ACCOUNTS
+                     R.id.security -> presenter.filterType = AccountsFilterType.SECURITY_ACCOUNTS
+                     R.id.game -> presenter.filterType = AccountsFilterType.GAME_ACCOUNTS
+                 }
+                 presenter.loadAccounts(false)
+                 true
+             }
+             show()
+         }
     }
 
     private fun showMessage(message: String) {

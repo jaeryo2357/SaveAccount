@@ -9,19 +9,34 @@ class AccountsPresenter(
     val accountView: AccountsContract.View
 ) : AccountsContract.Presenter {
 
+    var filterType : AccountsFilterType = AccountsFilterType.ALL_ACCOUNTS
+
     private var firstLoad = true;
 
     override fun start() {
-        loadAccounts()
+        loadAccounts(false)
     }
 
-    override fun loadAccounts() {
+    override fun loadAccounts(forceUpdate: Boolean) {
         if (firstLoad) {
             accountView.showLoadingIndicator(true)
 
+            if (forceUpdate) accountRepository.refreshAccounts()
+
             accountRepository.getAccounts(object : AccountDataSource.LoadAccountsCallback {
                 override fun onAccountsLoaded(accounts: List<Account>) {
-                    processAccounts(accounts)
+                    val filteringAccounts = ArrayList<Account>()
+
+                    for(account in accounts) {
+                        when (filterType) {
+                            AccountsFilterType.ALL_ACCOUNTS -> filteringAccounts.add(account)
+
+                            else -> {
+                                if (filterType.type == account.category) filteringAccounts.add(account)
+                            }
+                        }
+                    }
+                    processAccounts(filteringAccounts)
                 }
 
                 override fun onDataNotAvailable() {
