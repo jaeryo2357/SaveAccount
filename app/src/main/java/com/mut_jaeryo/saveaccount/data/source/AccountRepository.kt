@@ -1,6 +1,8 @@
 package com.mut_jaeryo.saveaccount.data.source
 
+import android.content.Context
 import com.mut_jaeryo.saveaccount.data.Account
+import com.mut_jaeryo.saveaccount.data.source.local.AccountLocalDataSource
 
 class AccountRepository(
     val dataSource: AccountDataSource
@@ -68,6 +70,10 @@ class AccountRepository(
         }
     }
 
+    fun refreshAccounts() {
+        cachedAccounts.clear()
+    }
+
     override fun deleteAllAccounts() {
         dataSource.deleteAllAccounts()
         cachedAccounts.clear()
@@ -107,13 +113,20 @@ class AccountRepository(
 
         @JvmStatic
         fun getInstance(
-            dataSource: AccountDataSource
+            dataSource: AccountLocalDataSource
         ): AccountRepository {
             return Instance ?: AccountRepository(dataSource).apply {
                 Instance = this
             }
         }
 
+        @JvmStatic
+        fun getInstance(context: Context): AccountRepository {
+            val dataSource = AccountLocalDataSource.getInstance(context)
+            return Instance ?: AccountRepository(dataSource).apply {
+                Instance = this
+            }
+        }
         @JvmStatic
         fun destroyInstance() {
             Instance = null
