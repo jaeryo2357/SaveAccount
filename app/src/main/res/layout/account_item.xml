@@ -20,13 +20,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/account_category"
-            android:text="@string/test_Account_category"
+            android:text="게임"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/test_Account_site"
+            android:text="롤"
             android:id="@+id/account_title"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>

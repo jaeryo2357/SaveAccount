@@ -112,7 +112,7 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
     }
 
     override fun showFilterPopUpMenu() {
-         PopupMenu(this@AccountsActivity, findViewById(R.id.filter)).apply {
+         PopupMenu(applicationContext, findViewById(R.id.filter)).apply {
              menuInflater.inflate(R.menu.filter_menu, menu)
              setOnMenuItemClickListener {
                  when(it.itemId) {
