@@ -8,14 +8,13 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.mut_jaeryo.saveaccount.R
+import com.mut_jaeryo.saveaccount.addeditaccount.AddEditAccountActivity
+import com.mut_jaeryo.saveaccount.addeditaccount.AddEditAccountActivity.Companion.ADD_REQUEST
+import com.mut_jaeryo.saveaccount.addeditaccount.AddEditAccountActivity.Companion.EDIT_REQUEST
 import com.mut_jaeryo.saveaccount.data.Account
-import com.mut_jaeryo.saveaccount.data.source.AccountDataSource
 import com.mut_jaeryo.saveaccount.data.source.AccountRepository
-import com.mut_jaeryo.saveaccount.data.source.local.AccountLocalDataSource
-import com.mut_jaeryo.saveaccount.insert.ui.InsertActivity
 import com.mut_jaeryo.saveaccount.util.showSnackBar
 import kotlinx.android.synthetic.main.activity_accounts.*
 
@@ -61,12 +60,18 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
     }
 
     override fun showAccountsDetailsUi(accountId: String) {
-        // DetailView 로 이동
+        val intent = Intent(this@AccountsActivity, AddEditAccountActivity::class.java).apply {
+            putExtra("REQUEST_CODE", EDIT_REQUEST)
+            putExtra("accountId", accountId)
+        }
+        startActivityForResult(intent , EDIT_REQUEST)
     }
 
     override fun showAddAccount() {
-        val intent = Intent(this@AccountsActivity, InsertActivity::class.java)
-        startActivityForResult(intent ,0)
+        val intent = Intent(this@AccountsActivity, AddEditAccountActivity::class.java).apply {
+            putExtra("REQUEST_CODE", ADD_REQUEST)
+        }
+        startActivityForResult(intent , ADD_REQUEST)
     }
 
     override fun showAccounts(accounts: List<Account>) {
@@ -121,6 +126,7 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
                      R.id.study -> presenter.filterType = AccountsFilterType.STUDY_ACCOUNTS
                      R.id.security -> presenter.filterType = AccountsFilterType.SECURITY_ACCOUNTS
                      R.id.game -> presenter.filterType = AccountsFilterType.GAME_ACCOUNTS
+                     else -> presenter.filterType = AccountsFilterType.OTHER_ACCOUNTS
                  }
                  presenter.loadAccounts(false)
                  true

@@ -12,7 +12,9 @@ enum class AccountsFilterType(val type : String) {
 
     STUDY_ACCOUNTS("공부"),
 
-    SECURITY_ACCOUNTS("보안");
+    SECURITY_ACCOUNTS("보안"),
+
+    OTHER_ACCOUNTS("기타");
 
     companion object {
         fun getColor(type : String) : Int = when(type) {
@@ -21,6 +23,8 @@ enum class AccountsFilterType(val type : String) {
             "스터디" -> R.color.colorStudy
 
             "게임" -> R.color.colorGame
+
+            "기타" -> R.color.colorOther
 
             else -> R.color.colorSNS
         }
