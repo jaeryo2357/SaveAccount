@@ -11,12 +11,13 @@ class AddEditAccountPresenter(
     val accountView: AddEditContract.View
 ) : AddEditContract.Presenter, AccountDataSource.GetAccountsCallback{
 
-    var category : String = ""
+    var category : String = "기타"
 
     override fun start() {
         if (accountId != null) {
             accountRepository.getAccount(accountId, this)
         }
+        accountView.setCategory(category)
     }
 
     override fun saveAccount(site: String, id: String, pwd: String) {

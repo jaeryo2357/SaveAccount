@@ -18,6 +18,8 @@ interface AddEditContract {
         fun setId(id: String)
 
         fun setPwd(pwd: String)
+        
+        fun setCategory(category: String)
     }
 
     interface Presenter {

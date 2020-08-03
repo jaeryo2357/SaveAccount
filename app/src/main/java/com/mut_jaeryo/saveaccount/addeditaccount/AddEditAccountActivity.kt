@@ -73,6 +73,10 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
         editText_Pwd.setText(pwd)
     }
 
+    override fun setCategory(category: String) {
+        selected_category.text = category
+    }
+
 
     companion object {
         const val ADD_REQUEST : Int = 100
