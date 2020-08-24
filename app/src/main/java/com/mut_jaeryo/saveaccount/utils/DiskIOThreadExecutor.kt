@@ -1,4 +1,4 @@
-package com.mut_jaeryo.saveaccount.util
+package com.mut_jaeryo.saveaccount.utils
 
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors

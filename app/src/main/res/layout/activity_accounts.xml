@@ -36,8 +36,13 @@
             android:layout_marginBottom="25dp"
             android:clickable="true"
             android:focusable="true"
+            app:borderWidth="0dp"
+            android:backgroundTint="@color/colorPrimary"
+            app:rippleColor="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@android:color/white"
+            android:tint="@android:color/white"
             app:srcCompat="@drawable/ic_add" />
 
         <TextView

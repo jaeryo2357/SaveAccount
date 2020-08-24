@@ -1,4 +1,4 @@
-package com.mut_jaeryo.saveaccount.util
+package com.mut_jaeryo.saveaccount.utils
 
 import android.os.Handler
 import android.os.Looper

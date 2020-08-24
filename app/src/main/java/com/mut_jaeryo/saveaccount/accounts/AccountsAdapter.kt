@@ -1,14 +1,16 @@
 package com.mut_jaeryo.saveaccount.accounts
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mut_jaeryo.saveaccount.R
+import com.mut_jaeryo.saveaccount.category.utils.CategoryUtil
 import com.mut_jaeryo.saveaccount.data.Account
 
-class AccountsAdapter(accounts : List<Account>, val listener : AccountItemListener) : RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
+class AccountsAdapter(val context : Context, accounts : List<Account>, val listener : AccountItemListener) : RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
 
     var accounts : List<Account> = accounts
     set(value) {
@@ -25,7 +27,7 @@ class AccountsAdapter(accounts : List<Account>, val listener : AccountItemListen
 
     override fun onBindViewHolder(holder: AccountsViewHolder, position: Int) {
         val account = accounts[position]
-        val color = AccountsFilterType.getColor(account.category)
+        val color = CategoryUtil.getColorWithCategory(context, account.category)
 
         holder.itemView.setOnClickListener { listener.onAccountClick(account) }
 

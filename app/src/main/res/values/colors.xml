@@ -5,8 +5,9 @@
     <color name="Background">#ffffff</color>
     <color name="colorAccent">#bb86fc</color>
 
-    <color name="colorSecurity">#00ffff</color>
-    <color name="colorStudy">#d98156</color>
+    <color name="colorSecurity">#A0B4FA</color>
+    <color name="colorStudy">#FFBEB1</color>
     <color name="colorGame">#7bb47b</color>
-    <color name="colorSNS">#d6598b</color>
+    <color name="colorSNS">#FF3267</color>
+    <color name="colorOther">#555555</color>
 </resources>

@@ -16,4 +16,8 @@ data class Account(
     @ColumnInfo(name = "userId") var userId : String = "",
     @ColumnInfo(name = "userPwd") var userPwd : String = "",
     @PrimaryKey @ColumnInfo(name = "entryId") val id : String = UUID.randomUUID().toString()
-)
+) {
+    fun isEmpty() : Boolean {
+        return site.isEmpty() || userId.isEmpty() || userPwd.isEmpty()
+    }
+}
