@@ -44,12 +44,6 @@ class AddEditAccountPresenter(
 
     }
 
-    override fun onActivityResult(resultCode: Int, requestCode: Int, data: Intent?) {
-        if (resultCode == RESULT_OK) {
-
-        }
-    }
-
     override fun onAccountLoaded(account: Account) {
         accountView.setSite(account.site)
         accountView.setId(account.id)

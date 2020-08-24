@@ -34,7 +34,5 @@ interface AddEditContract {
         fun updateAccountView()
 
         fun changeCategory()
-
-        fun onActivityResult(resultCode: Int, requestCode: Int, data: Intent?)
     }
 }

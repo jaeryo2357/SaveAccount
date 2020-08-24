@@ -80,11 +80,6 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
         selected_category.text = category
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        presenter.onActivityResult(resultCode, requestCode, data)
-    }
-
     companion object {
         const val ADD_REQUEST : Int = 100
         const val EDIT_REQUEST : Int = 200
