@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 
 import com.mut_jaeryo.saveaccount.R
+import com.mut_jaeryo.saveaccount.category.CategoryListDialogFragment
 import com.mut_jaeryo.saveaccount.data.source.AccountRepository
 import com.mut_jaeryo.saveaccount.utils.showSnackBar
 import kotlinx.android.synthetic.main.activity_addedit.*
@@ -77,6 +78,14 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
 
     override fun setCategory(category: String) {
         selected_category.text = category
+    }
+
+    override fun showCategorySelectView() {
+        val modalDialog = CategoryListDialogFragment.newInstance()
+        modalDialog.run {
+            setSelectedListener(presenter)
+            show(supportFragmentManager, "dialog")
+        }
     }
 
     companion object {

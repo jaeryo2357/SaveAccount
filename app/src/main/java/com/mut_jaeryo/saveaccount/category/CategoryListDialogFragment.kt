@@ -1,6 +1,7 @@
 package com.mut_jaeryo.saveaccount.category
 
 import android.content.Context
+import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+
 import com.mut_jaeryo.saveaccount.R
+import com.mut_jaeryo.saveaccount.category.utils.CategoryUtil
 
 /**
  *
@@ -23,7 +26,7 @@ import com.mut_jaeryo.saveaccount.R
  */
 class CategoryListDialogFragment : BottomSheetDialogFragment() {
 
-    private var selectedListener : OnCategorySelectedListener? = null
+    private var selectedListener: OnCategorySelectedListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +41,9 @@ class CategoryListDialogFragment : BottomSheetDialogFragment() {
         activity?.findViewById<RecyclerView>(R.id.list)?.adapter = CategoryAdapter(context!!)
     }
 
-    public fun setSelectedListener(listener: OnCategorySelectedListener) {
+    public fun setSelectedListener(listener: OnCategorySelectedListener) : BottomSheetDialogFragment {
         this.selectedListener = listener;
+        return this
     }
 
     private inner class ViewHolder internal constructor(
@@ -60,7 +64,7 @@ class CategoryListDialogFragment : BottomSheetDialogFragment() {
 
     private inner class CategoryAdapter(val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
-        private val category : Array<String> by lazy {
+        private val category: Array<String> by lazy {
             context.resources.getStringArray(R.array.category_array);
         }
 
@@ -71,7 +75,13 @@ class CategoryListDialogFragment : BottomSheetDialogFragment() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.text.text = category[position]
 
+            val drawable: ShapeDrawable = holder.color.drawable as ShapeDrawable
+
+            drawable.paint.color = CategoryUtil.getColorWithCategory(context, category[position])
+
+
             holder.itemView.setOnClickListener {
+                this@CategoryListDialogFragment.dismiss()
                 selectedListener?.onSelected(category[position], position)
             }
         }
@@ -82,12 +92,12 @@ class CategoryListDialogFragment : BottomSheetDialogFragment() {
     }
 
     interface OnCategorySelectedListener {
-        fun onSelected(category: String, position : Int)
+        fun onSelected(category: String, position: Int)
     }
 
     companion object {
 
-        fun newInstance(itemCount: Int): CategoryListDialogFragment =
+        fun newInstance(): CategoryListDialogFragment =
             CategoryListDialogFragment()
     }
 }

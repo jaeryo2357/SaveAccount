@@ -1,17 +1,19 @@
 package com.mut_jaeryo.saveaccount.addeditaccount
 
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
+import com.mut_jaeryo.saveaccount.category.CategoryListDialogFragment
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.data.source.AccountDataSource
 import com.mut_jaeryo.saveaccount.data.source.AccountRepository
 import java.lang.RuntimeException
 
 class AddEditAccountPresenter(
-    val accountId : String?,
+    val accountId: String?,
     val accountRepository: AccountRepository,
     val accountView: AddEditContract.View
-) : AddEditContract.Presenter, AccountDataSource.GetAccountsCallback{
+) : AddEditContract.Presenter, AccountDataSource.GetAccountsCallback, CategoryListDialogFragment.OnCategorySelectedListener{
 
     var category : String = "기타"
 
@@ -41,7 +43,7 @@ class AddEditAccountPresenter(
     }
 
     override fun changeCategory() {
-
+        accountView.showCategorySelectView()
     }
 
     override fun onAccountLoaded(account: Account) {
@@ -73,5 +75,9 @@ class AddEditAccountPresenter(
         val accountWithId = Account(category, site, id, pwd, accountId)
         accountRepository.saveAccount(accountWithId)
         accountView.successSaveAccount()
+    }
+
+    override fun onSelected(category: String, position: Int) {
+        accountView.setCategory(category)
     }
 }

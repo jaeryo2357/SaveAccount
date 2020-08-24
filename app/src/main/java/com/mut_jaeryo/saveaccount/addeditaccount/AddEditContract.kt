@@ -21,6 +21,8 @@ interface AddEditContract {
         fun setPwd(pwd: String)
         
         fun setCategory(category: String)
+
+        fun showCategorySelectView()
     }
 
     interface Presenter {
