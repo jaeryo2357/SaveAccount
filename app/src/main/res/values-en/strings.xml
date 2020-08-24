@@ -19,6 +19,14 @@
     <string name="category_study">Study</string>
     <string name="category_other">Other</string>
 
+    <string-array name="category_array">
+        <item>Game</item>
+        <item>SNS</item>
+        <item>Security</item>
+        <item>Study</item>
+        <item>Other</item>
+    </string-array>
+
     <string name="menu_refresh">Refresh</string>
     <string name="menu_filter">Filter</string>
 

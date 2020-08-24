@@ -18,6 +18,14 @@
     <string name="category_study">공부</string>
     <string name="category_other">기타</string>
 
+    <string-array name="category_array">
+        <item>게임</item>
+        <item>SNS</item>
+        <item>보안</item>
+        <item>공부</item>
+        <item>기타</item>
+    </string-array>
+
     <string name="menu_refresh">새로고침</string>
     <string name="menu_filter">계정 필터</string>
 

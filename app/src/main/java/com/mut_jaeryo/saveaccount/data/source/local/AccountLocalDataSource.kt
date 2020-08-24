@@ -3,7 +3,7 @@ package com.mut_jaeryo.saveaccount.data.source.local
 import android.content.Context
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.data.source.AccountDataSource
-import com.mut_jaeryo.saveaccount.util.AppExecutor
+import com.mut_jaeryo.saveaccount.utils.AppExecutor
 
 /**
  * 현재 프로젝트에서 NetworkIO가 없지만 AppExecutor class는 Thread의 사용에 따라 DiskIo, NetworkIO, MainThread 3가지 백그라운드 작업으로 분리되었다.

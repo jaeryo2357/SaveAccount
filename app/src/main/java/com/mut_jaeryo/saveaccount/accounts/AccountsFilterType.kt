@@ -2,31 +2,18 @@ package com.mut_jaeryo.saveaccount.accounts
 
 import com.mut_jaeryo.saveaccount.R
 
-enum class AccountsFilterType(val type : String) {
+enum class AccountsFilterType(val typeId : Int) {
 
-    ALL_ACCOUNTS("모두"),
+    ALL_ACCOUNTS(R.string.category_all),
 
-    GAME_ACCOUNTS("게임"),
+    GAME_ACCOUNTS(R.string.category_game),
 
-    SNS_ACCOUNTS("SNS"),
+    SNS_ACCOUNTS(R.string.category_sns),
 
-    STUDY_ACCOUNTS("공부"),
+    STUDY_ACCOUNTS(R.string.category_study),
 
-    SECURITY_ACCOUNTS("보안"),
+    SECURITY_ACCOUNTS(R.string.category_security),
 
-    OTHER_ACCOUNTS("기타");
+    OTHER_ACCOUNTS(R.string.category_other);
 
-    companion object {
-        fun getColor(type : String) : Int = when(type) {
-            "보안" -> R.color.colorSecurity
-
-            "스터디" -> R.color.colorStudy
-
-            "게임" -> R.color.colorGame
-
-            "기타" -> R.color.colorOther
-
-            else -> R.color.colorSNS
-        }
-    }
 }

@@ -1,10 +1,12 @@
 package com.mut_jaeryo.saveaccount.accounts
 
+import android.content.Context
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.data.source.AccountDataSource
 import com.mut_jaeryo.saveaccount.data.source.AccountRepository
 
 class AccountsPresenter(
+    val context : Context,
     val accountRepository: AccountRepository,
     val accountView: AccountsContract.View
 ) : AccountsContract.Presenter {
@@ -32,7 +34,8 @@ class AccountsPresenter(
                             AccountsFilterType.ALL_ACCOUNTS -> filteringAccounts.add(account)
 
                             else -> {
-                                if (filterType.type == account.category) filteringAccounts.add(account)
+                                val categoryFilter : String = context.getString(filterType.typeId)
+                                if (categoryFilter == account.category) filteringAccounts.add(account)
                             }
                         }
                     }

@@ -15,13 +15,13 @@ import com.mut_jaeryo.saveaccount.addeditaccount.AddEditAccountActivity.Companio
 import com.mut_jaeryo.saveaccount.addeditaccount.AddEditAccountActivity.Companion.EDIT_REQUEST
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.data.source.AccountRepository
-import com.mut_jaeryo.saveaccount.util.showSnackBar
+import com.mut_jaeryo.saveaccount.utils.showSnackBar
 import kotlinx.android.synthetic.main.activity_accounts.*
 
 class AccountsActivity : AppCompatActivity(), AccountsContract.View{
 
     private val presenter : AccountsPresenter by lazy {
-        AccountsPresenter(
+        AccountsPresenter( this,
             accountRepository = AccountRepository.Companion.getInstance(context = applicationContext),
             accountView = this@AccountsActivity
         )
@@ -34,7 +34,7 @@ class AccountsActivity : AppCompatActivity(), AccountsContract.View{
         }
     }
 
-    private val listAdapter : AccountsAdapter = AccountsAdapter(ArrayList(0), itemListener)
+    private val listAdapter : AccountsAdapter = AccountsAdapter(this, ArrayList(0), itemListener)
 
     override fun onResume() {
         super.onResume()

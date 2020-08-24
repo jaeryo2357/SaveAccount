@@ -1,14 +1,13 @@
 package com.mut_jaeryo.saveaccount.addeditaccount
 
 import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 
 import com.mut_jaeryo.saveaccount.R
 import com.mut_jaeryo.saveaccount.data.source.AccountRepository
-import com.mut_jaeryo.saveaccount.util.showSnackBar
+import com.mut_jaeryo.saveaccount.utils.showSnackBar
 import kotlinx.android.synthetic.main.activity_addedit.*
 
 
