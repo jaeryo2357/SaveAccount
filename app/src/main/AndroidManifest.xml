@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".category.CategoryActivity"></activity>
+
         <activity
-            android:name=".addeditaccount.ui.AddEditAccountActivity"
+            android:name=".addeditaccount.AddEditAccountActivity"
             android:parentActivityName=".accounts.AccountsActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity

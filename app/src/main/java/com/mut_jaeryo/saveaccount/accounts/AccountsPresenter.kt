@@ -70,7 +70,7 @@ class AccountsPresenter(
     }
 
     override fun result(requestCode: Int, resultCode: Int) {
-        TODO("Not yet implemented")
+
     }
 
 }

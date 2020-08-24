@@ -1,6 +1,8 @@
 package com.mut_jaeryo.saveaccount.category
 
 import android.content.Context
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -11,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 import com.mut_jaeryo.saveaccount.R
 import com.mut_jaeryo.saveaccount.category.utils.CategoryUtil
@@ -36,9 +39,9 @@ class CategoryListDialogFragment : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.findViewById<RecyclerView>(R.id.list)?.layoutManager =
+        view.findViewById<RecyclerView>(R.id.list)?.layoutManager =
             LinearLayoutManager(context)
-        activity?.findViewById<RecyclerView>(R.id.list)?.adapter = CategoryAdapter(context!!)
+        view.findViewById<RecyclerView>(R.id.list)?.adapter = CategoryAdapter(context!!)
     }
 
     public fun setSelectedListener(listener: OnCategorySelectedListener) : BottomSheetDialogFragment {
@@ -75,10 +78,14 @@ class CategoryListDialogFragment : BottomSheetDialogFragment() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.text.text = category[position]
 
-            val drawable: ShapeDrawable = holder.color.drawable as ShapeDrawable
 
-            drawable.paint.color = CategoryUtil.getColorWithCategory(context, category[position])
-
+            val drawable: Drawable = holder.color.drawable
+            val color = ContextCompat.getColor(context, CategoryUtil.getColorWithCategory(context, category[position]))
+            if (drawable is ShapeDrawable) {
+                drawable.paint.color = color
+            } else if (drawable is GradientDrawable) {
+                drawable.setColor(color)
+            }
 
             holder.itemView.setOnClickListener {
                 this@CategoryListDialogFragment.dismiss()

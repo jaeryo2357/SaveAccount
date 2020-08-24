@@ -26,6 +26,11 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.start()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addedit)
