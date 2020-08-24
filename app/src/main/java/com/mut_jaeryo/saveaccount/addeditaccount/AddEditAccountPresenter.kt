@@ -78,6 +78,7 @@ class AddEditAccountPresenter(
     }
 
     override fun onSelected(category: String, position: Int) {
+        this.category = category
         accountView.setCategory(category)
     }
 }
