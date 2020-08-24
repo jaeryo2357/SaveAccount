@@ -1,5 +1,6 @@
 package com.mut_jaeryo.saveaccount.addeditaccount
 
+import android.content.Intent
 import com.mut_jaeryo.saveaccount.data.Account
 
 interface AddEditContract {
@@ -27,5 +28,13 @@ interface AddEditContract {
         fun start()
 
         fun saveAccount(site: String, id: String, pwd: String)
+
+        fun addAccountView()
+
+        fun updateAccountView()
+
+        fun changeCategory()
+
+        fun onActivityResult(resultCode: Int, requestCode: Int, data: Intent?)
     }
 }

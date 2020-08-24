@@ -1,5 +1,7 @@
 package com.mut_jaeryo.saveaccount.addeditaccount
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.data.source.AccountDataSource
 import com.mut_jaeryo.saveaccount.data.source.AccountRepository
@@ -16,8 +18,9 @@ class AddEditAccountPresenter(
     override fun start() {
         if (accountId != null) {
             accountRepository.getAccount(accountId, this)
+        } else {
+            accountView.setCategory(category)
         }
-        accountView.setCategory(category)
     }
 
     override fun saveAccount(site: String, id: String, pwd: String) {
@@ -29,10 +32,29 @@ class AddEditAccountPresenter(
         }
     }
 
+    override fun addAccountView() {
+        accountView.showAddAccountView()
+    }
+
+    override fun updateAccountView() {
+        accountView.showEditAccountView()
+    }
+
+    override fun changeCategory() {
+
+    }
+
+    override fun onActivityResult(resultCode: Int, requestCode: Int, data: Intent?) {
+        if (resultCode == RESULT_OK) {
+
+        }
+    }
+
     override fun onAccountLoaded(account: Account) {
         accountView.setSite(account.site)
         accountView.setId(account.id)
         accountView.setPwd(account.userPwd)
+        accountView.setCategory(account.category);
     }
 
     override fun onDataNotAvailable() {

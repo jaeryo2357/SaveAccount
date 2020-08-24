@@ -1,6 +1,7 @@
 package com.mut_jaeryo.saveaccount.addeditaccount
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -30,9 +31,9 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
         setContentView(R.layout.activity_addedit)
 
         if (intent.getIntExtra("REQUEST_CODE", -1) == ADD_REQUEST) {
-            showAddAccountView()
+            presenter.addAccountView()
         } else {
-            showEditAccountView()
+            presenter.updateAccountView()
         }
 
         add_edit_account_btn.setOnClickListener {
@@ -42,6 +43,8 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
                 pwd = editText_Pwd.text.toString()
             )
         }
+
+        category_card.setOnClickListener { presenter.changeCategory() }
     }
 
     override fun successSaveAccount() {
@@ -77,6 +80,10 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
         selected_category.text = category
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        presenter.onActivityResult(resultCode, requestCode, data)
+    }
 
     companion object {
         const val ADD_REQUEST : Int = 100
