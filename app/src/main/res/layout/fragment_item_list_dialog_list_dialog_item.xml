@@ -5,6 +5,7 @@
     android:paddingLeft="@dimen/list_item_spacing"
     android:paddingTop="@dimen/list_item_spacing_half"
     android:paddingRight="@dimen/list_item_spacing"
+    android:background="?attr/selectableItemBackground"
     android:paddingBottom="@dimen/list_item_spacing_half"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -24,7 +25,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/list_item_spacing"
-        android:background="?attr/selectableItemBackground"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView_category"

@@ -6,6 +6,7 @@
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginTop="@dimen/list_item_margin"
     android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:background="?attr/selectableItemBackground"
     android:paddingTop="@dimen/list_item_margin"
     android:paddingBottom="@dimen/list_item_margin"
     app:cardCornerRadius="4dp">
@@ -21,20 +22,22 @@
             android:id="@+id/account_category_color"
             android:background="@color/colorAccent"/>
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:layout_marginLeft="5dp"
-            android:orientation="vertical">
+            android:layout_marginLeft="5dp">
 
             <TextView
                 android:id="@+id/account_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
                 android:text="게임"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:layout_marginTop="@dimen/list_item_margin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/account_title"
@@ -42,7 +45,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="롤"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-        </LinearLayout>
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
