@@ -48,7 +48,7 @@ class AddEditAccountPresenter(
 
     override fun onAccountLoaded(account: Account) {
         accountView.setSite(account.site)
-        accountView.setId(account.id)
+        accountView.setId(account.userId)
         accountView.setPwd(account.userPwd)
         accountView.setCategory(account.category);
     }
@@ -58,7 +58,12 @@ class AddEditAccountPresenter(
     }
 
     private fun addAccount(site: String, id: String, pwd: String) {
-        val account = Account(category, site, id, pwd)
+        val account = Account(
+            category = category,
+            site = site,
+            userId = id,
+            userPwd = pwd)
+
         if (account.isEmpty()) {
             accountView.showEmptyAccountError()
         } else {
