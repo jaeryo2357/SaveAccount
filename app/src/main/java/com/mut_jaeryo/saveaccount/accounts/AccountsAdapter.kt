@@ -1,10 +1,14 @@
 package com.mut_jaeryo.saveaccount.accounts
 
 import android.content.Context
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.ShapeDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mut_jaeryo.saveaccount.R
 import com.mut_jaeryo.saveaccount.category.utils.CategoryUtil
@@ -27,7 +31,8 @@ class AccountsAdapter(val context : Context, accounts : List<Account>, val liste
 
     override fun onBindViewHolder(holder: AccountsViewHolder, position: Int) {
         val account = accounts[position]
-        val color = CategoryUtil.getColorWithCategory(context, account.category)
+        val colorId = CategoryUtil.getColorWithCategory(context, account.category)
+        val color = ContextCompat.getColor(context, colorId)
 
         holder.itemView.setOnClickListener { listener.onAccountClick(account) }
 
@@ -35,7 +40,15 @@ class AccountsAdapter(val context : Context, accounts : List<Account>, val liste
             text = account.category
             setTextColor(color)
         }
-        holder.colorView.setBackgroundColor(color)
+        holder.colorView?.let {
+            val drawable = it.drawable
+
+            if (drawable is ShapeDrawable) {
+                drawable.paint.color = color
+            } else if (drawable is GradientDrawable) {
+                drawable.setColor(color)
+            }
+        }
         holder.site?.text = account.site
     }
 
@@ -44,7 +57,7 @@ class AccountsAdapter(val context : Context, accounts : List<Account>, val liste
     }
 
     class AccountsViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val colorView : View = view.findViewById(R.id.account_category_color)
+        val colorView : ImageView = view.findViewById(R.id.account_category_color)
         val category : TextView? = view.findViewById(R.id.account_category)
         val site : TextView? = view.findViewById(R.id.account_title)
     }

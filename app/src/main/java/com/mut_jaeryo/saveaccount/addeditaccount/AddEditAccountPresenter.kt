@@ -3,6 +3,7 @@ package com.mut_jaeryo.saveaccount.addeditaccount
 import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
+import com.mut_jaeryo.saveaccount.R
 import com.mut_jaeryo.saveaccount.category.CategoryListDialogFragment
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.data.source.AccountDataSource
@@ -10,12 +11,13 @@ import com.mut_jaeryo.saveaccount.data.source.AccountRepository
 import java.lang.RuntimeException
 
 class AddEditAccountPresenter(
+    val context: Context,
     val accountId: String?,
     val accountRepository: AccountRepository,
     val accountView: AddEditContract.View
 ) : AddEditContract.Presenter, AccountDataSource.GetAccountsCallback, CategoryListDialogFragment.OnCategorySelectedListener{
 
-    var category : String = "기타"
+    var category : String = context.getString(R.string.category_other)
 
     override fun start() {
         if (accountId != null) {
@@ -47,8 +49,10 @@ class AddEditAccountPresenter(
     }
 
     override fun onAccountLoaded(account: Account) {
+        this.category = account.category
+
         accountView.setSite(account.site)
-        accountView.setId(account.id)
+        accountView.setId(account.userId)
         accountView.setPwd(account.userPwd)
         accountView.setCategory(account.category);
     }
@@ -58,7 +62,12 @@ class AddEditAccountPresenter(
     }
 
     private fun addAccount(site: String, id: String, pwd: String) {
-        val account = Account(category, site, id, pwd)
+        val account = Account(
+            category = category,
+            site = site,
+            userId = id,
+            userPwd = pwd)
+
         if (account.isEmpty()) {
             accountView.showEmptyAccountError()
         } else {

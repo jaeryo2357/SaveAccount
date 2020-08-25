@@ -103,7 +103,11 @@ class AccountRepository(
      * 변경되는 Account 객체를 cached하는 동시에 원하는 일도 수행
      */
     private inline fun cacheAndPerform(account : Account, perform : (Account) -> Unit) {
-        val cacheAccount = Account(account.site, account.userId, account.userPwd, account.id)
+        val cacheAccount = Account(category = account.category,
+            site = account.site,
+            userId = account.userId,
+            userPwd = account.userPwd,
+            id = account.id)
         cachedAccounts.put(cacheAccount.id, cacheAccount)
         perform(cacheAccount)
     }

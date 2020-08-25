@@ -20,14 +20,15 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
 
     private val presenter : AddEditAccountPresenter by lazy {
         AddEditAccountPresenter(
+            this,
             intent.getStringExtra("accountId"),
             AccountRepository.getInstance(this),
             this
         )
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         presenter.start()
     }
 
@@ -50,6 +51,7 @@ class AddEditAccountActivity : AppCompatActivity(), AddEditContract.View {
         }
 
         category_card.setOnClickListener { presenter.changeCategory() }
+
     }
 
     override fun successSaveAccount() {
