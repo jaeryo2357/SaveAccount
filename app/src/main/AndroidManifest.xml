@@ -3,15 +3,20 @@
     package="com.mut_jaeryo.saveaccount">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:name=".AccountApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.AddActivity"
-            android:parentActivityName=".view.MainActivity"></activity>
-        <activity android:name=".view.MainActivity"
+
+        <activity
+            android:name=".addeditaccount.AddEditAccountActivity"
+            android:parentActivityName=".accounts.AccountsActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".accounts.AccountsActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

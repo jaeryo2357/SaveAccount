@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#3700b3</color>
     <color name="Background">#ffffff</color>
     <color name="colorAccent">#bb86fc</color>
+
+    <color name="colorSecurity">#A0B4FA</color>
+    <color name="colorStudy">#FFBEB1</color>
+    <color name="colorGame">#7bb47b</color>
+    <color name="colorSNS">#FF3267</color>
+    <color name="colorOther">#555555</color>
 </resources>

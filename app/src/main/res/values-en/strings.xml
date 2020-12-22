@@ -2,7 +2,34 @@
 <resources>
     <string name="app_name">SaveAccount</string>
 
-    <string name="add_Site">사이트 명</string>
-    <string name="add_Id">아이디</string>
-    <string name="add_password">비밀번호</string>
+    <string name="add_Site">Site</string>
+    <string name="add_Id">Id</string>
+    <string name="add_password">password</string>
+
+    <string name="loading_account_empty">add Account</string>
+    <string name="loading_accounts_error">can\'t find accounts</string>
+    <string name="loading_success">loading success</string>
+
+    <string name="empty_account_error">Account is Empty.</string>
+    <string name="account_save_success">Account is Saved.</string>
+
+    <string name="category_all">All</string>
+    <string name="category_game">Game</string>
+    <string name="category_sns">SNS</string>
+    <string name="category_security">Security</string>
+    <string name="category_study">Study</string>
+    <string name="category_other">Other</string>
+
+    <string-array name="category_array">
+        <item>Game</item>
+        <item>SNS</item>
+        <item>Security</item>
+        <item>Study</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_filter">Filter</string>
+
+    <string name="save_btn">SAVE</string>
 </resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/all"
+        android:title="@string/category_all"/>
+
+    <item android:id="@+id/sns"
+        android:title="@string/category_sns"/>
+
+    <item android:id="@+id/game"
+        android:title="@string/category_game"/>
+
+    <item android:id="@+id/security"
+        android:title="@string/category_security"/>
+
+    <item android:id="@+id/study"
+        android:title="@string/category_study"/>
+
+    <item android:id="@+id/other"
+        android:title="@string/category_other"/>
+</menu>
