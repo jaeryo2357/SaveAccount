@@ -1,5 +1,7 @@
 package com.mut_jaeryo.saveaccount.data.source
 
+import androidx.lifecycle.LiveData
+import com.mut_jaeryo.saveaccount.data.Result
 import com.mut_jaeryo.saveaccount.data.Account
 
 /**
@@ -7,27 +9,17 @@ import com.mut_jaeryo.saveaccount.data.Account
  */
 interface AccountDataSource {
 
-    interface LoadAccountsCallback {
+    suspend fun getAccounts(): Result<List<Account>>
 
-        fun onAccountsLoaded(accounts: List<Account>)
+    suspend fun getAccount(accountId: Int): Result<Account>
 
-        fun onDataNotAvailable()
-    }
+    fun observeAccounts() : LiveData<Result<List<Account>>>
 
-    interface GetAccountsCallback {
+    fun observeAccount(accountId: Int) : LiveData<Result<Account>>
 
-        fun onAccountLoaded(account: Account)
+    suspend fun saveAccount(account: Account)
 
-        fun onDataNotAvailable()
-    }
+    suspend fun deleteAllAccounts()
 
-    fun getAccounts(callback : LoadAccountsCallback)
-
-    fun getAccount(accountId : String, callback : GetAccountsCallback)
-
-    fun saveAccount(account: Account)
-
-    fun deleteAllAccounts()
-
-    fun deleteAccount(accountId : String)
+    suspend fun deleteAccount(accountId: Int)
 }

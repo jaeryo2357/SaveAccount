@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.mut_jaeryo.saveaccount.data.Account
 
 @Database(entities = arrayOf(Account::class), version = 1, exportSchema = false)
-public abstract class AccountDataBase : RoomDatabase(){
+public abstract class AccountDataBase : RoomDatabase() {
 
     abstract fun accountDao(): AccountDao
 
@@ -17,19 +17,19 @@ public abstract class AccountDataBase : RoomDatabase(){
         @Volatile
         private var INSTANCE: AccountDataBase? = null
 
-        fun getDatabase(
+        fun getInstance(
             context: Context
         ): AccountDataBase {
             return INSTANCE
                 ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AccountDataBase::class.java,
-                    "accounts.db"
-                ).build()
-                INSTANCE = instance
-                return instance
-            }
+                    val instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        AccountDataBase::class.java,
+                        "accounts.db"
+                    ).build()
+                    INSTANCE = instance
+                    return instance
+                }
         }
     }
 }

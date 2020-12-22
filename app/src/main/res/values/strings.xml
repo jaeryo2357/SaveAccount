@@ -10,6 +10,7 @@
     <string name="loading_success">로딩에 성공했습니다.</string>
 
     <string name="empty_account_error">계정 정보가 비어있습니다.</string>
+    <string name="account_save_success">계정 정보가 저장되었습니다.</string>
 
     <string name="category_all">모두</string>
     <string name="category_game">게임</string>
@@ -29,7 +30,6 @@
     <string name="menu_refresh">새로고침</string>
     <string name="menu_filter">계정 필터</string>
 
-    <string name="add_btn">저장하기</string>
-    <string name="edit_btn">수정하기</string>
+    <string name="save_btn">저장하기</string>
 
 </resources>

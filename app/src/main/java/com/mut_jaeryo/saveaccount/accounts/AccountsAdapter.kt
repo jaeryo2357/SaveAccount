@@ -1,64 +1,73 @@
 package com.mut_jaeryo.saveaccount.accounts
 
-import android.content.Context
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mut_jaeryo.saveaccount.R
-import com.mut_jaeryo.saveaccount.category.utils.CategoryUtil
 import com.mut_jaeryo.saveaccount.data.Account
+import com.mut_jaeryo.saveaccount.databinding.AccountItemBinding
+import javax.inject.Inject
 
-class AccountsAdapter(val context : Context, accounts : List<Account>, val listener : AccountItemListener) : RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
+class AccountsAdapter @Inject constructor(private val listener: AccountItemListener?) :
+    ListAdapter<Account, AccountsAdapter.AccountViewHolder>(AccountDiffCallback) {
 
-    var accounts : List<Account> = accounts
-    set(value) {
-        field = value
-        notifyDataSetChanged()
+    init {
+        setHasStableIds(true)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.account_item, parent, false)
-        return AccountsViewHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountViewHolder {
+        return AccountViewHolder.from(parent).apply {
+            itemView.setOnClickListener {
+                val account = getItem(adapterPosition)
+                    listener?.onAccountClick(account)
+            }
 
-    override fun getItemCount() = accounts.size
-
-    override fun onBindViewHolder(holder: AccountsViewHolder, position: Int) {
-        val account = accounts[position]
-        val colorId = CategoryUtil.getColorWithCategory(context, account.category)
-        val color = ContextCompat.getColor(context, colorId)
-
-        holder.itemView.setOnClickListener { listener.onAccountClick(account) }
-
-        holder.category?.apply {
-            text = account.category
-            setTextColor(color)
-        }
-        holder.colorView?.let {
-            val drawable = it.drawable
-
-            if (drawable is ShapeDrawable) {
-                drawable.paint.color = color
-            } else if (drawable is GradientDrawable) {
-                drawable.setColor(color)
+            itemView.setOnLongClickListener {
+                val account = getItem(adapterPosition)
+                listener?.onDeleteAccountClick(account)
+                true
             }
         }
-        holder.site?.text = account.site
+    }
+
+
+    override fun onBindViewHolder(holder: AccountViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(item)
+    }
+
+    class AccountViewHolder(private val binding: AccountItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(account: Account) {
+            binding.account = account
+            //즉시 실행
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): AccountViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = AccountItemBinding.inflate(layoutInflater, parent, false)
+                return AccountViewHolder(binding)
+            }
+        }
     }
 
     interface AccountItemListener {
-        fun onAccountClick(clickedAccount : Account)
+        fun onAccountClick(clickedAccount: Account?)
+
+        fun onDeleteAccountClick(clickedAccount: Account?)
+    }
+}
+
+object AccountDiffCallback : DiffUtil.ItemCallback<Account>() {
+    override fun areItemsTheSame(oldItem: Account, newItem: Account): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    class AccountsViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val colorView : ImageView = view.findViewById(R.id.account_category_color)
-        val category : TextView? = view.findViewById(R.id.account_category)
-        val site : TextView? = view.findViewById(R.id.account_title)
+    override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
+        return oldItem == newItem
     }
 }
