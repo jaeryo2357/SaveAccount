@@ -5,6 +5,7 @@
 - AAC
   - Room
   - ViewModel
+  - DataBinding
   - LifeCycle
 - MVVM
 - Kotlin
