@@ -11,6 +11,7 @@
     <string name="loading_success">loading success</string>
 
     <string name="empty_account_error">Account is Empty.</string>
+    <string name="account_save_success">Account is Saved.</string>
 
     <string name="category_all">All</string>
     <string name="category_game">Game</string>
@@ -30,6 +31,5 @@
     <string name="menu_refresh">Refresh</string>
     <string name="menu_filter">Filter</string>
 
-    <string name="add_btn">SAVE</string>
-    <string name="edit_btn">EDIT</string>
+    <string name="save_btn">SAVE</string>
 </resources>

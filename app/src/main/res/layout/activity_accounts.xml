@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <import type="com.mut_jaeryo.saveaccount.accounts.AccountsViewModel"/>
+        <variable
+            name="vm"
+            type="AccountsViewModel" />
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,6 +20,7 @@
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:refresh="@{vm.dataLoading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -21,6 +30,8 @@
                 android:id="@+id/accounts_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:accountItems="@{vm.accountList}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/loading_account_empty"
+            app:visible="@{vm.dataEmpty}"
             android:id="@+id/accounts_list_empty"
             app:layout_constraintTop_toTopOf="parent">
 
