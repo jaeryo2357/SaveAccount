@@ -20,6 +20,7 @@ class AccountsViewModel @ViewModelInject constructor(
     private val _forceUpdate = MutableLiveData<Boolean>(false)
 
     private val _accountList: LiveData<List<Account>> = _forceUpdate.switchMap { forceUpdate ->
+        Log.d("viewmodel", "forceUpdate")
         if (forceUpdate) {
             _dataLoading.value = true
             viewModelScope.launch {
@@ -58,13 +59,10 @@ class AccountsViewModel @ViewModelInject constructor(
         if (accounts is Success) {
             _dataError.value = false
 
-            if (accounts.data.isEmpty()) {
-                _dataEmpty.value = true
-            } else {
-                _dataEmpty.value = false
-                viewModelScope.launch {
-                    result.value = filterItem(accounts.data, getSavedFilterType())
-                }
+            _dataEmpty.value = accounts.data.isEmpty()
+
+            viewModelScope.launch {
+                result.value = filterItem(accounts.data, getSavedFilterType())
             }
         } else {
             _dataError.value = true
@@ -106,7 +104,6 @@ class AccountsViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             accountRepository.deleteAccount(accountId = account.id)
         }
-        loadAccounts(true)
     }
 
     fun refresh() {
