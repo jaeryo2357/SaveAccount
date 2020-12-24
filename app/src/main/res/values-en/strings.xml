@@ -32,4 +32,7 @@
     <string name="menu_filter">Filter</string>
 
     <string name="save_btn">SAVE</string>
+
+    <string name="delete_action">Delete</string>
+    <string name="delete_cancel">Cancel</string>
 </resources>
