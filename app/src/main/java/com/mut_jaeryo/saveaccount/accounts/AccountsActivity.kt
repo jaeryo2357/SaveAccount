@@ -49,8 +49,6 @@ class AccountsActivity : AppCompatActivity(), AccountsAdapter.AccountItemListene
         viewModel.dataError.observe(this, Observer {
             if (it) {
                 showLoadingAccountsError()
-            } else {
-                showSuccessFullySavedMessage()
             }
         })
     }
@@ -60,7 +58,7 @@ class AccountsActivity : AppCompatActivity(), AccountsAdapter.AccountItemListene
     }
 
     private fun setupFAB() {
-        accountBinding.addAccount.setOnClickListener {
+        accountBinding.addAccountFab.setOnClickListener {
             showAddAccount()
         }
     }
@@ -68,11 +66,6 @@ class AccountsActivity : AppCompatActivity(), AccountsAdapter.AccountItemListene
     private fun showLoadingAccountsError() {
         showMessage(getString(R.string.loading_accounts_error))
     }
-
-    private fun showSuccessFullySavedMessage() {
-        showMessage(getString(R.string.loading_success))
-    }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -135,12 +128,13 @@ class AccountsActivity : AppCompatActivity(), AccountsAdapter.AccountItemListene
     override fun onDeleteAccountClick(clickedAccount: Account?) {
         val builder = AlertDialog.Builder(this@AccountsActivity).apply {
             setTitle("확인해주세요").setMessage("삭제하시겠습니까?")
-            setPositiveButton("삭제") { _, _ ->
+            setPositiveButton(getString(R.string.delete_action)) { _, _ ->
                 clickedAccount?.let {
                     viewModel.deleteAccount(clickedAccount)
+                    
                 }
             }
-            setNegativeButton("취소") { _, _ ->
+            setNegativeButton(getString(R.string.delete_cancel)) { _, _ ->
                 //..
             }
         }
