@@ -92,5 +92,5 @@ dependencies {
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.28-alpha$rootProject.hiltVersion"
 
     //UI Automator
-    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.uiautomatorVersion"
 }
