@@ -117,7 +117,7 @@ class AddEditAccountViewModel @ViewModelInject constructor(
     }
 
     private fun onAccountLoaded(account: Account) {
-        _accountCategoryId.value = Category.getFilter(account.categoryId).typeId
+        _accountCategoryId.value = account.categoryId
         _accountSiteName.value = account.site
         _userId.value = account.userId
         _userPassword.value = account.userPwd

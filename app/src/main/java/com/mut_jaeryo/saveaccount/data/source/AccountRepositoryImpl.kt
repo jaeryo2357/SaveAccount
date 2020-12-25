@@ -8,6 +8,7 @@ import com.mut_jaeryo.saveaccount.data.Result.Error
 import com.mut_jaeryo.saveaccount.data.Result.Success
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 class AccountRepositoryImpl @Inject constructor(
@@ -25,7 +26,7 @@ class AccountRepositoryImpl @Inject constructor(
             loadAccountsFromLocalDataSource()
         }
 
-        return dataSource.getAccounts()
+        return Success<List<Account>>(cachedAccounts.values.toList())
     }
 
     /**
@@ -38,7 +39,13 @@ class AccountRepositoryImpl @Inject constructor(
             loadAccountFromLocalDataSource(accountId)
         }
 
-        return dataSource.getAccount(accountId)
+        val account = cachedAccounts[accountId]
+        
+        return if (account != null) {
+            Success<Account>(account)
+        } else {
+            Error(Exception("not found Account"))
+        }
     }
 
     /**
