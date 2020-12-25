@@ -82,7 +82,7 @@ class AccountsActivityTest {
 
         onView(withText("createAccount")).perform(longClick())
         //show Delete Dialog, click delete button
-        onView(withText(R.string.delete_action)).perform(click())
+        onView(withText(R.string.delete_dialog_action)).perform(click())
 
         onView(withText("createAccount")).check(doesNotExist())
 

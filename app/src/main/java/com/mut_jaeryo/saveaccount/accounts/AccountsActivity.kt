@@ -127,14 +127,14 @@ class AccountsActivity : AppCompatActivity(), AccountsAdapter.AccountItemListene
 
     override fun onDeleteAccountClick(clickedAccount: Account?) {
         val builder = AlertDialog.Builder(this@AccountsActivity).apply {
-            setTitle("확인해주세요").setMessage("삭제하시겠습니까?")
-            setPositiveButton(getString(R.string.delete_action)) { _, _ ->
+            setTitle(getString(R.string.delete_dialog_title)).setMessage(getString(R.string.delete_dialog_content))
+            setPositiveButton(getString(R.string.delete_dialog_action)) { _, _ ->
                 clickedAccount?.let {
                     viewModel.deleteAccount(clickedAccount)
                     
                 }
             }
-            setNegativeButton(getString(R.string.delete_cancel)) { _, _ ->
+            setNegativeButton(getString(R.string.delete_dialog_cancel)) { _, _ ->
                 //..
             }
         }

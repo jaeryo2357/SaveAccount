@@ -33,6 +33,8 @@
 
     <string name="save_btn">SAVE</string>
 
-    <string name="delete_action">Delete</string>
-    <string name="delete_cancel">Cancel</string>
+    <string name="delete_dialog_title">Delete Account</string>
+    <string name="delete_dialog_content">Are you sure?</string>
+    <string name="delete_dialog_action">Delete</string>
+    <string name="delete_dialog_cancel">Cancel</string>
 </resources>
