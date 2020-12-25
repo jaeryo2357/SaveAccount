@@ -11,6 +11,10 @@
 - Kotlin
   - Coroutine
 - Dagger Hilt
+- Test
+  - JUnit
+  - Espresso
+  - Ui Automator
 
 ### [개발 의문점]
 
