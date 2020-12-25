@@ -32,7 +32,8 @@
 
     <string name="save_btn">저장하기</string>
 
-
-    <string name="delete_action">삭제</string>
-    <string name="delete_cancel">취소</string>
+    <string name="delete_dialog_title">확인해주세요</string>
+    <string name="delete_dialog_content">삭제하시겠습니까?</string>
+    <string name="delete_dialog_action">Delete</string>
+    <string name="delete_dialog_cancel">Cancel</string>
 </resources>
