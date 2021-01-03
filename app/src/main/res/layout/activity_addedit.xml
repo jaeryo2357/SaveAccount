@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
             android:ems="10"
+            android:forceDarkAllowed="false"
             android:text="@={vm.accountSiteName}"
             android:hint="@string/add_Site"
             android:inputType="textPersonName"
