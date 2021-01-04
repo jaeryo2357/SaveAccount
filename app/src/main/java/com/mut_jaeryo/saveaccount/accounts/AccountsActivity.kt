@@ -8,15 +8,16 @@ import android.view.MenuItem
 import android.widget.PopupMenu
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.preference.PreferenceManager
 import com.google.android.material.snackbar.Snackbar
 import com.mut_jaeryo.saveaccount.R
 import com.mut_jaeryo.saveaccount.addeditaccount.AddEditAccountActivity
 import com.mut_jaeryo.saveaccount.category.Category
 import com.mut_jaeryo.saveaccount.data.Account
 import com.mut_jaeryo.saveaccount.databinding.ActivityAccountsBinding
+import com.mut_jaeryo.saveaccount.theme.ThemeHelper
 import com.mut_jaeryo.saveaccount.utils.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -75,6 +76,10 @@ class AccountsActivity : AppCompatActivity(), AccountsAdapter.AccountItemListene
             R.id.filter -> {
                 showFilterPopUpMenu()
             }
+
+            R.id.darktheme -> {
+                showDarkThemeDialog()
+            }
         }
         return true
     }
@@ -101,6 +106,22 @@ class AccountsActivity : AppCompatActivity(), AccountsAdapter.AccountItemListene
             }
             show()
         }
+    }
+
+    private fun showDarkThemeDialog() {
+        val darkThemeArray = resources.getStringArray(R.array.darktheme_dialog_values)
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+
+        val builder = AlertDialog.Builder(this@AccountsActivity).apply {
+            setTitle(getString(R.string.darktheme_dialog_title))
+                .setItems(R.array.darktheme_dialog_items) { _, position ->
+                    sharedPreferences.getString("themePref", darkThemeArray[position])
+                    ThemeHelper.applyTheme(darkThemeArray[position])
+                }
+        }
+
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 
     private fun showMessage(message: String) {
@@ -141,5 +162,9 @@ class AccountsActivity : AppCompatActivity(), AccountsAdapter.AccountItemListene
 
         val alertDialog = builder.create()
         alertDialog.show()
+    }
+
+    companion object {
+        const val TAG = "AccountsActivity"
     }
 }

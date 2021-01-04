@@ -19,15 +19,8 @@
     <string name="category_study">공부</string>
     <string name="category_other">기타</string>
 
-    <string-array name="category_array">
-        <item>게임</item>
-        <item>SNS</item>
-        <item>보안</item>
-        <item>공부</item>
-        <item>기타</item>
-    </string-array>
-
     <string name="menu_refresh">새로고침</string>
+    <string name="menu_darktheme">다크 테마</string>
     <string name="menu_filter">계정 필터</string>
 
     <string name="save_btn">저장하기</string>
@@ -36,4 +29,6 @@
     <string name="delete_dialog_content">삭제하시겠습니까?</string>
     <string name="delete_dialog_action">Delete</string>
     <string name="delete_dialog_cancel">Cancel</string>
+
+    <string name="darktheme_dialog_title">Choose Theme</string>
 </resources>

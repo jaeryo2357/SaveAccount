@@ -87,7 +87,7 @@
                     android:id="@+id/selected_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
+                    android:textColor="?android:attr/textColorPrimary"
                     app:categoryText="@{vm.accountCategoryId}"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />

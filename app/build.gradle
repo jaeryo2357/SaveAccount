@@ -93,4 +93,6 @@ dependencies {
 
     //UI Automator
     androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.uiautomatorVersion"
+
+    implementation 'androidx.preference:preference-ktx:1.1.1'
 }

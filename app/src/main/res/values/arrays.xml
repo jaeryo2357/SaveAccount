@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_array">
+        <item>게임</item>
+        <item>SNS</item>
+        <item>보안</item>
+        <item>공부</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="darktheme_dialog_items">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Set by Battery Saver</item>
+    </string-array>
+    <string-array name="darktheme_dialog_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>default</item>
+    </string-array>
+</resources>

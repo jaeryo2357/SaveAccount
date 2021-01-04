@@ -20,15 +20,8 @@
     <string name="category_study">Study</string>
     <string name="category_other">Other</string>
 
-    <string-array name="category_array">
-        <item>Game</item>
-        <item>SNS</item>
-        <item>Security</item>
-        <item>Study</item>
-        <item>Other</item>
-    </string-array>
-
     <string name="menu_refresh">Refresh</string>
+    <string name="menu_darktheme">Dark Theme</string>
     <string name="menu_filter">Filter</string>
 
     <string name="save_btn">SAVE</string>
@@ -37,4 +30,7 @@
     <string name="delete_dialog_content">Are you sure?</string>
     <string name="delete_dialog_action">Delete</string>
     <string name="delete_dialog_cancel">Cancel</string>
+
+    <string name="darktheme_dialog_title">Choose Theme</string>
+
 </resources>
