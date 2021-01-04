@@ -9,4 +9,8 @@
         android:id="@+id/filter"
         android:icon="@drawable/filter_list"
         app:showAsAction="ifRoom"/>
+
+    <item android:title="@string/menu_darktheme"
+        android:id="@+id/darktheme"
+        app:showAsAction="never"/>
 </menu>
